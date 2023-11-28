@@ -1,77 +1,63 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+    <div class="ui middle aligned center aligned grid" style="background-color: rgba(0, 0, 0, 0.89); height: 100vh;">
+        <div class="two column row" style="height: 100%;">
+            <div class="column" style="background-color: rgb(0, 0, 0); height: 100vh;"><br><br><br><br><br>
+                <img src="{{ asset('images/login2.jpg') }}" alt="Imagen" style="max-width: 103%; height: auto; display: block; margin: auto;">
+            </div>
+            <div class="column" style="max-width: 450px; background-color: black; height: 100vh;">
+                <h2 class="ui teal image header"><br>
+                    <img class="ui circular image" src="{{ asset('images/logo.jpg') }}" alt="Logo" >
+                </h2>
+                <form class="ui large form" method="POST" action="{{ route('register') }}" >
+                    @csrf
+                    <div class="ui stacked segment" style="background-color: rgba(255, 60, 0, 0.842);">
+                        <div class="field">
+                            <div class="ui input">
+                                <input type="text" name="name" placeholder="NOMBRE COMPLETO" required autofocus>
                             </div>
                         </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="field">
+                            <select class="ui fluid dropdown" name="rol" required autofocus>
+                                <option value="">SELECCIONA UN PUESTO</option>
+                                <option value="administrador">ADMINISTRADOR</option>
+                                <option value="mesero">MESERO</option>
+                                <option value="cocinero">COCINERO</option>
+                                <option value="cajero">CAJERO</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <div class="ui input">
+                                <input type="email" name="email" placeholder="CORREO ELECTRÓNICO" required autofocus>
                             </div>
                         </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="field">
+                            <div class="ui input">
+                                <input type="password" name="password" placeholder="CONTRASEÑA" required>
                             </div>
                         </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                        <div class="field">
+                            <div class="ui input">
+                                <input type="password" name="password_confirmation" placeholder="CONFIRMAR CONTRASEÑA" required>
                             </div>
                         </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
+                        @if ($errors->any())
+                            <div class="ui negative message">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
-                        </div>
-                    </form>
+                        @endif
+                        <button type="submit" style="background-color: black;" class="ui fluid large teal submit button">Registrar</button>
+                    </div>
+                </form>
+                <div class="ui message" style="background-color: rgba(255, 60, 0, 0.199); color: white">
+                    ¿Tienes cuenta? <a href="{{ route('login') }}">Iniciar Sesion</a>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
