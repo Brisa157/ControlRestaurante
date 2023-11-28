@@ -23,9 +23,23 @@ class PlatillosController extends Controller
 
     public function store(Request $request)
     {
-        // Valida y guarda el nuevo platillo
+        $request->validate([
+            'name' => 'required|unique:platillos|max:255',
+            'categoria_id' => 'required|max:255',
+            'precio' => 'required|max:255',
+        ]);
+
+        Platillos::create([
+            'name' => $request->name,
+            'categoria_id' => $request->categoria_id,
+            'precio' => $request->precio,
+        ]);
+
+        return redirect()->route('platillos.index')->with('success', 'Platillo creado correctamente');
+
     }
 
+    //Ets
     public function edit(Platillos $platillo)
     {
         return view('platillos.edit', compact('platillo'));
@@ -38,6 +52,9 @@ class PlatillosController extends Controller
 
     public function destroy(Platillos $platillo)
     {
-        // Elimina el platillo
+        $platillo->delete();
+
+        return redirect()->route('platillos.index')->with('success', 'Platillo eliminado correctamente');
+
     }
 }
