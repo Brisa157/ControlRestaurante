@@ -10,7 +10,7 @@ class Platillos extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'categoria_id', 'precio'];
+    protected $fillable = ['name', 'categoria_id', 'precio', 'imagen'];
 
     public function categoria()
     {
