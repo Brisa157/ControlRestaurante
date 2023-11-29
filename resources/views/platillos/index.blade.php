@@ -10,6 +10,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Imagen</th>
                     <th>Nombre</th>
                     <th>Categoría</th>
                     <th>Precio</th>
@@ -20,6 +21,11 @@
                 @foreach($platillos as $platillo)
                 <tr>
                     <td>{{ $platillo->id }}</td>
+                    <td>
+                        @if($platillo->imagen)
+                            <img src="{{ asset('carpeta_imagenes/' . $platillo->imagen) }}" alt="{{ $platillo->name }}" style="max-width: 100px; max-height: 100px;">
+                        @endif
+                    </td>
                     <td>{{ $platillo->name }}</td>
                     <td>{{ $platillo->categoria_nombre }}</td>
                     <td>${{ number_format($platillo->precio, 2) }}</td>
