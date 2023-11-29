@@ -25,7 +25,7 @@
             <div class="two fields">
                 <div class="field">
                     <label for="precio">Precio:</label>
-                    <input type="text" id="precio" name="precio" required>
+                    <input type="number" id="precio" name="precio" required>
                 </div>
                 <div class="field">
                     <label for="imagen">Imagen:</label>
