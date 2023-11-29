@@ -9,7 +9,7 @@
     <a class="item" href="{{ route('platillos.index') }}">
         Platillos
     </a>
-    <a class="item" href="">
+    <a class="item" href="{{ route('ordenes.index') }}">
         Ordenes
     </a>
     <a class="item" href="">
