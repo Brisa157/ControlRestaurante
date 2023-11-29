@@ -2,32 +2,28 @@
 
 @section('content')
     <div class="container">
-        <h2>Listado de Platillos
-            <a href="{{ route('platillos.create') }}" class="ui green button" style="float: right;">NUEVO PLATILLO</a>
+        <h2>Listado de Categorias
+            <a href="{{ route('categorias.create') }}" class="ui green button" style="float: right;">NUEVA CATEGORIA</a>
         </h2>
-        <!-- Mostrar la tabla con los platillos -->
+        <!-- Mostrar la tabla con los categorias -->
         <table class="ui celled table">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
-                    <th>Categoría</th>
-                    <th>Precio</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($platillos as $platillo)
+                @foreach($categorias as $categoria)
                 <tr>
-                    <td>{{ $platillo->id }}</td>
-                    <td>{{ $platillo->name }}</td>
-                    <td>{{ $platillo->categoria_id }}</td>
-                    <td>{{ $platillo->precio }}</td>
+                    <td>{{ $categoria->id }}</td>
+                    <td>{{ $categoria->name }}</td>
                     <td>
                         <!-- Enlaces a editar y eliminar -->
                         <div class="ui buttons">
-                            <a href="{{ route('platillos.edit', $platillo->id) }}" class="ui blue button">Editar</a>
-                            <form action="{{ route('platillos.destroy', $platillo->id) }}" method="POST">
+                            <a href="{{ route('categorias.edit', $categoria->id) }}" class="ui primary button">Editar</a>
+                            <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button class="ui red button" type="submit">Eliminar</button>
