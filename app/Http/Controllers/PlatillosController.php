@@ -45,15 +45,27 @@ class PlatillosController extends Controller
 
     }
 
-    //Ets
     public function edit(Platillos $platillo)
     {
-        return view('platillos.edit', compact('platillo'));
+        $categorias = Categorias::all();
+        return view('platillos.edit', compact('categorias', 'platillo'));
     }
 
     public function update(Request $request, Platillos $platillo)
     {
-        // Valida y actualiza el platillo existente
+        $request->validate([
+            'name' => 'required',
+            'categoria_id' => 'required|exists:categorias,id',
+            'precio' => 'required|numeric',
+        ]);
+
+        $platillo->update([
+            'name' => $request->name,
+            'categoria_id' => $request->categoria_id,
+            'precio' => $request->precio,
+        ]);
+
+        return redirect()->route('platillos.index')->with('success', '¡El platillo se actualizó correctamente!');
     }
 
     public function destroy(Platillos $platillo)
