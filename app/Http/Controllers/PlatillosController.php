@@ -11,6 +11,12 @@ class PlatillosController extends Controller
     public function index()
     {
         $platillos = Platillos::all();
+
+        foreach ($platillos as $platillo) {
+            $categoria = Categorias::find($platillo->categoria_id);
+            $platillo->categoria_nombre = $categoria ? $categoria->name : 'N/A';
+        }
+
         return view('platillos.index', compact('platillos'));
     }
 
