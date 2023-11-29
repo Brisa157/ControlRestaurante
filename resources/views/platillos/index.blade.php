@@ -21,8 +21,8 @@
                 <tr>
                     <td>{{ $platillo->id }}</td>
                     <td>{{ $platillo->name }}</td>
-                    <td>{{ $platillo->categoria_id }}</td>
-                    <td>{{ $platillo->precio }}</td>
+                    <td>{{ $platillo->categoria_nombre }}</td>
+                    <td>${{ number_format($platillo->precio, 2) }}</td>
                     <td>
                         <!-- Enlaces a editar y eliminar -->
                         <div class="ui buttons">
@@ -30,7 +30,7 @@
                             <form action="{{ route('platillos.destroy', $platillo->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button class="ui red button" type="submit">Eliminar</button>
+                                <button class="ui red button" type="submit" onclick="return confirm('¿Estás seguro de que quieres eliminar este platillo?')">Eliminar</button>
                             </form>
                         </div>
                     </td>
