@@ -34,7 +34,7 @@
 
                     @if (Route::has('password.request'))
                         <div class="ui message" style="background-color: rgba(255, 60, 0, 0.199);">
-                            <a href="{{ route('password.request') }}">Olvidé mi contraseña</a>
+                            <a href="{{ route('password.request') }}"></a>
                         </div>
                     @endif
                 </form>

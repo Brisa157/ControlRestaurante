@@ -12,9 +12,9 @@
                         <div class="content">
                             <div class="header">Información Restaurante</div>
                             <div class="description">
-                                <p>Address: 123 Main St</p>
-                                <p>Phone: (123) 456-7890</p>
-                                <p>Manager: John Doe</p>
+                                <p>Address: Centro, 99100 Sombrerete, Zac.</p>
+                                <p>Phone: 455 134 6901</p>
+                                <p>Manager: Salvador Garcia Dueñes</p>
                             </div>
                         </div>
                     </div>
@@ -24,9 +24,9 @@
                         <div class="content">
                             <div class="header">Ordenes Recientes</div>
                             <div class="description">
-                                <p>Order #001 - 3x Pizza, 2x Soda - $25.00</p>
-                                <p>Order #002 - 1x Pasta, 1x Salad - $15.00</p>
-                                <p>Order #003 - 2x Burger, 1x Fries - $18.00</p>
+                                <p>Order #01 - 1 albóndigas , 1 Refresco - $25.00</p>
+                                <p>Order #02 - 1 sopa de crema, 1 ensalada de frutas, 1 Té helado - $15.00</p>
+                                <p>Order #03 - 2 sopas de tortilla, 1 Limonada - $18.00</p>
                             </div>
                         </div>
                     </div>
