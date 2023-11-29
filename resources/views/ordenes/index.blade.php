@@ -40,7 +40,7 @@
                                         @method('PUT')
                                         <button type="submit" class="ui red button">Cancelar</button>
                                     </form>
-                                    <a href="{{ route('pagos.create', $orden->id) }}" class="ui black button">Pagar</a>
+                                    <a href="{{ url('pagos/create/' . $orden->id) }}" class="ui green button">Pagar</a>
                                 @endif
                             </td>
                         </tr>
