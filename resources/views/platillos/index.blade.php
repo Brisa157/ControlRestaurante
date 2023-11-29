@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h2>Listado de Platillos
+        <h2>Menu
             <a href="{{ route('platillos.create') }}" class="ui green button" style="float: right;">NUEVO PLATILLO</a>
         </h2>
         <!-- Mostrar la tabla con los platillos -->
@@ -27,7 +27,7 @@
                         @endif
                     </td>
                     <td>{{ $platillo->name }}</td>
-                    <td>{{ $platillo->categoria_nombre }}</td>
+                    <td>{{ $platillo->categoria->name }}</td>
                     <td>${{ number_format($platillo->precio, 2) }}</td>
                     <td>
                         <!-- Enlaces a editar y eliminar -->
