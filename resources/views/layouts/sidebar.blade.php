@@ -12,7 +12,7 @@
     <a class="item" href="{{ route('ordenes.index') }}">
         Ordenes
     </a>
-    <a class="item" href="">
+    <a class="item" href="{{ route('pagos.index') }}">
         Pagos
     </a>
     <a class="item" href="">
