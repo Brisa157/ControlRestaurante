@@ -4,7 +4,7 @@
     <div class="container">
         <h2>Crear Platillo</h2>
         <!-- Formulario para crear un nuevo platillo -->
-        <form action="{{ route('platillos.store') }}" method="POST" class="ui form">
+        <form action="{{ route('platillos.store') }}" method="POST" class="ui form" enctype="multipart/form-data">
             @csrf
             <div class="two fields">
                 <div class="field">
@@ -22,9 +22,15 @@
                     </select>
                 </div>
             </div>
-            <div class="field">
-                <label for="precio">Precio:</label>
-                <input type="text" id="precio" name="precio" required>
+            <div class="two fields">
+                <div class="field">
+                    <label for="precio">Precio:</label>
+                    <input type="text" id="precio" name="precio" required>
+                </div>
+                <div class="field">
+                    <label for="imagen">Imagen:</label>
+                    <input type="file" id="imagen" name="imagen">
+                </div>
             </div>
             <button class="ui black button" type="submit">Guardar</button>
         </form>
