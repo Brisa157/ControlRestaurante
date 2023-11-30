@@ -1,66 +1,94 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+![Guzzle](.github/logo.png?raw=true)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Guzzle, PHP HTTP client
 
-## About Laravel
+[![Latest Version](https://img.shields.io/github/release/guzzle/guzzle.svg?style=flat-square)](https://github.com/guzzle/guzzle/releases)
+[![Build Status](https://img.shields.io/github/workflow/status/guzzle/guzzle/CI?label=ci%20build&style=flat-square)](https://github.com/guzzle/guzzle/actions?query=workflow%3ACI)
+[![Total Downloads](https://img.shields.io/packagist/dt/guzzlehttp/guzzle.svg?style=flat-square)](https://packagist.org/packages/guzzlehttp/guzzle)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Guzzle is a PHP HTTP client that makes it easy to send HTTP requests and
+trivial to integrate with web services.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Simple interface for building query strings, POST requests, streaming large
+  uploads, streaming large downloads, using HTTP cookies, uploading JSON data,
+  etc...
+- Can send both synchronous and asynchronous requests using the same interface.
+- Uses PSR-7 interfaces for requests, responses, and streams. This allows you
+  to utilize other PSR-7 compatible libraries with Guzzle.
+- Supports PSR-18 allowing interoperability between other PSR-18 HTTP Clients.
+- Abstracts away the underlying HTTP transport, allowing you to write
+  environment and transport agnostic code; i.e., no hard dependency on cURL,
+  PHP streams, sockets, or non-blocking event loops.
+- Middleware system allows you to augment and compose client behavior.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```php
+$client = new \GuzzleHttp\Client();
+$response = $client->request('GET', 'https://api.github.com/repos/guzzle/guzzle');
 
-## Learning Laravel
+echo $response->getStatusCode(); // 200
+echo $response->getHeaderLine('content-type'); // 'application/json; charset=utf8'
+echo $response->getBody(); // '{"id": 1420053, "name": "guzzle", ...}'
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+// Send an asynchronous request.
+$request = new \GuzzleHttp\Psr7\Request('GET', 'http://httpbin.org');
+$promise = $client->sendAsync($request)->then(function ($response) {
+    echo 'I completed! ' . $response->getBody();
+});
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+$promise->wait();
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Help and docs
 
-## Laravel Sponsors
+We use GitHub issues only to discuss bugs and new features. For support please refer to:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- [Documentation](https://docs.guzzlephp.org)
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/guzzle)
+- [#guzzle](https://app.slack.com/client/T0D2S9JCT/CE6UAAKL4) channel on [PHP-HTTP Slack](https://slack.httplug.io/)
+- [Gitter](https://gitter.im/guzzle/guzzle)
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Installing Guzzle
 
-## Contributing
+The recommended way to install Guzzle is through
+[Composer](https://getcomposer.org/).
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+composer require guzzlehttp/guzzle
+```
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Version Guidance
 
-## Security Vulnerabilities
+| Version | Status              | Packagist           | Namespace    | Repo                | Docs                | PSR-7 | PHP Version  |
+|---------|---------------------|---------------------|--------------|---------------------|---------------------|-------|--------------|
+| 3.x     | EOL                 | `guzzle/guzzle`     | `Guzzle`     | [v3][guzzle-3-repo] | [v3][guzzle-3-docs] | No    | >=5.3.3,<7.0 |
+| 4.x     | EOL                 | `guzzlehttp/guzzle` | `GuzzleHttp` | [v4][guzzle-4-repo] | N/A                 | No    | >=5.4,<7.0   |
+| 5.x     | EOL                 | `guzzlehttp/guzzle` | `GuzzleHttp` | [v5][guzzle-5-repo] | [v5][guzzle-5-docs] | No    | >=5.4,<7.4   |
+| 6.x     | Security fixes only | `guzzlehttp/guzzle` | `GuzzleHttp` | [v6][guzzle-6-repo] | [v6][guzzle-6-docs] | Yes   | >=5.5,<8.0   |
+| 7.x     | Latest              | `guzzlehttp/guzzle` | `GuzzleHttp` | [v7][guzzle-7-repo] | [v7][guzzle-7-docs] | Yes   | >=7.2.5,<8.3 |
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+[guzzle-3-repo]: https://github.com/guzzle/guzzle3
+[guzzle-4-repo]: https://github.com/guzzle/guzzle/tree/4.x
+[guzzle-5-repo]: https://github.com/guzzle/guzzle/tree/5.3
+[guzzle-6-repo]: https://github.com/guzzle/guzzle/tree/6.5
+[guzzle-7-repo]: https://github.com/guzzle/guzzle
+[guzzle-3-docs]: https://guzzle3.readthedocs.io/
+[guzzle-5-docs]: https://docs.guzzlephp.org/en/5.3/
+[guzzle-6-docs]: https://docs.guzzlephp.org/en/6.5/
+[guzzle-7-docs]: https://docs.guzzlephp.org/en/latest/
+
+
+## Security
+
+If you discover a security vulnerability within this package, please send an email to security@tidelift.com. All security vulnerabilities will be promptly addressed. Please do not disclose security-related issues publicly until a fix has been announced. Please see [Security Policy](https://github.com/guzzle/guzzle/security/policy) for more information.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Guzzle is made available under the MIT License (MIT). Please see [License File](LICENSE) for more information.
+
+## For Enterprise
+
+Available as part of the Tidelift Subscription
+
+The maintainers of Guzzle and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. [Learn more.](https://tidelift.com/subscription/pkg/packagist-guzzlehttp-guzzle?utm_source=packagist-guzzlehttp-guzzle&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
