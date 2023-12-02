@@ -14,7 +14,7 @@
                 </div>
                 <div class="eight wide column">
                     <div class="field">
-                        <label>Descripcion:</label>
+                        <label>Precio:</label>
                         <input type="number" name="total" value="{{ $total }}" required>
                     </div>
                 </div>
