@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h2>Pagos</h2>
+        <h2>Pagos Realizados:</h2>
         <!-- Mostrar la tabla con los platillos -->
         <table class="ui celled table">
             <thead>
