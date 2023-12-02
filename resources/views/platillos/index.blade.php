@@ -6,8 +6,12 @@
             <a href="{{ route('platillos.create') }}" class="ui green button" style="float: right;">NUEVO PLATILLO</a>
             <a href="{{ route('platillos.pdf.generate') }}" class="ui blue button" style="float: right; margin-right: 10px;" target="_blank">PDF</a>
         </h2>
+        <!-- Input de búsqueda -->
+        <div class="ui input" style="margin-bottom: 10px;"><br>
+            <input type="text" id="searchInput" placeholder="Buscar platillo...">
+        </div>
         <!-- Mostrar la tabla con los platillos -->
-        <table class="ui celled table">
+        <table class="ui celled table" id="platillosTable">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -46,4 +50,20 @@
             </tbody>
         </table>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#searchInput').on('keyup', function() {
+                const searchText = $(this).val().toLowerCase();
+                $('#platillosTable tbody tr').each(function() {
+                    const text = $(this).text().toLowerCase();
+                    if (text.indexOf(searchText) === -1) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
