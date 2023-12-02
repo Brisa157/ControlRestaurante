@@ -43,7 +43,7 @@ class PlatillosController extends Controller
         // Devolver el contenido del PDF
         return response($pdfContent)
         ->header('Content-Type', 'application/pdf')
-        ->header('Content-Disposition', 'inline; filename="platillos.pdf"');
+        ->header('Content-Disposition', 'inline; filename="Platillos.pdf"');
     }
 
     function getImageBase64($imagePath) {
