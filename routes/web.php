@@ -39,3 +39,4 @@ Route::put('/orden/{orden}/cancelar', [OrdersController::class, 'cancelar'])->na
 // Ruta para agregar un platillo a una orden
 Route::post('/ordenes/agregar', [OrdersController::class, 'agregar'])->name('ordenes.agregar');
 Route::get('/generate-pdf', [PlatillosController::class, 'generatePDF'])->name('platillos.pdf.generate');
+Route::get('/orders/generate-pdf', [OrdersController::class, 'generatePDF'])->name('orders.pdf.generate');
