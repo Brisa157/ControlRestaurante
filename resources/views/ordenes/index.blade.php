@@ -4,6 +4,7 @@
     <div class="container">
         <h2>Listado de Ordenes
             <a href="{{ route('ordenes.create') }}" class="ui green button" style="float: right;">NUEVA ORDEN</a>
+            <a href="{{ route('orders.pdf.generate') }}" class="ui blue button" style="float: right; margin-right: 10px;" target="_blank">PDF</a>
         </h2>
         <!-- Mostrar la tabla con los platillos -->
         <table class="ui celled table">
