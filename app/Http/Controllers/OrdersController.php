@@ -35,7 +35,7 @@ class OrdersController extends Controller
         // Devolver el contenido del PDF
         return response($pdfContent)
         ->header('Content-Type', 'application/pdf')
-        ->header('Content-Disposition', 'inline; filename="platillos.pdf"');
+        ->header('Content-Disposition', 'inline; filename="Ordenes.pdf"');
     }
 
     // Función para crear una nueva orden
