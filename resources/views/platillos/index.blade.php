@@ -4,6 +4,7 @@
     <div class="container">
         <h2>Menu
             <a href="{{ route('platillos.create') }}" class="ui green button" style="float: right;">NUEVO PLATILLO</a>
+            <a href="{{ route('platillos.pdf.generate') }}" class="ui blue button" style="float: right; margin-right: 10px;" target="_blank">PDF</a>
         </h2>
         <!-- Mostrar la tabla con los platillos -->
         <table class="ui celled table">
